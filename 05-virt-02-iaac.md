@@ -61,3 +61,12 @@ ansible [core 2.12.10]
   jinja version = 2.10.1
   libyaml = True
 ```
+**Задача 4**
+
+Воспроизведите практическую часть лекции самостоятельно.
+```
+vagrant@server1:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+vagrant@server1:~$ docker -v
+Docker version 24.0.2, build cb74dfc
+```
