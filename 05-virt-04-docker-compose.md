@@ -13,13 +13,153 @@
 ## Задача 2
 
 <details>
-<summary>Первая VM в облаке</summary>
+<summary>2.1 Первая VM в облаке</summary>
 
-2.1. Создайте вашу первую виртуальную машину в YandexCloud с помощью web-интерфейса YandexCloud.
+Создайте вашу первую виртуальную машину в YandexCloud с помощью web-интерфейса YandexCloud.
 
 </details>
 
 ![yandex_vm](https://github.com/zrusakov/devops-netology/assets/89297920/e9289621-7381-4153-8645-8072919cc9f7)
+
+<details>
+<summary>2.2 Первая VM в облаке с помощью Terraform  </summary>
+
+2.2.* (Необязательное задание)
+Создайте вашу первую виртуальную машину в YandexCloud с помощью Terraform (вместо использования веб-интерфейса YandexCloud). Используйте Terraform-код в директории (src/terraform).
+
+Чтобы получить зачёт, вам нужно предоставить вывод команды terraform apply и страницы свойств, созданной ВМ из личного кабинета YandexCloud.
+
+</details>
+
+<details>
+<summary>terraform apply</summary>
+
+vagrant@server1:~/terraform/config$ terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # yandex_compute_instance.node01 will be created
+  + resource "yandex_compute_instance" "node01" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "node01.netology.cloud"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                centos:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDYGOrdDn3eAoRCl9GqK2w7RzyD8Em7Y+UdKgWIiKrUHLt6Q2h8ae20yL3EA2X2qbb7tJQ3WHiHDBa8KpKsxL9ucfskgd0izxqI6M63OvO4kWWkzFSdKcRYUZitL6jsh8yb9S+KaivoH+6eAyU0V0G1mCWSWPeu9g66979DQ2hu8Yj5/ps+jDGP6SNEcaf23fTPG11fTvVNi2qyHQUKV/2D7cpTXa5s1QZMlNEMYEyIT5p8aq25laZJacky9uaTTBC4g/9nmxp//XY3OZpRCXuszhO6dPPWOadqqp/GvAmH9G7PC1jVhtsHVMs9Mu56IilfHyG8aPGhAfk1XddgvMlA1hUh+2uilKcajtAYDbaeYBikpSGjLbrdiQKwlzosjCA7qE0DVNn442Dlkb6JDHtGveDlF4lmmdIJnNTutDLpbZcM0M+hX7uuNJNu97SzqD+oQpE+fg5u2t0Mf8hwIMZA7gxBDZlHHwl77oK/IkLtstpcX0QkbCXkWUR/louaXi8= vagrant@server1
+            EOT
+        }
+      + name                      = "node01"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-a"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd80i7f2q4l8507sbteu"
+              + name        = "root-node01"
+              + size        = 50
+              + snapshot_id = (known after apply)
+              + type        = "network-nvme"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = (known after apply)
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = true
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 8
+          + memory        = 8
+        }
+    }
+
+  # yandex_vpc_network.default will be created
+  + resource "yandex_vpc_network" "default" {
+      + created_at                = (known after apply)
+      + default_security_group_id = (known after apply)
+      + folder_id                 = (known after apply)
+      + id                        = (known after apply)
+      + labels                    = (known after apply)
+      + name                      = "net"
+      + subnet_ids                = (known after apply)
+    }
+
+  # yandex_vpc_subnet.default will be created
+  + resource "yandex_vpc_subnet" "default" {
+      + created_at     = (known after apply)
+      + folder_id      = (known after apply)
+      + id             = (known after apply)
+      + labels         = (known after apply)
+      + name           = "subnet"
+      + network_id     = (known after apply)
+      + v4_cidr_blocks = [
+          + "192.168.101.0/24",
+        ]
+      + v6_cidr_blocks = (known after apply)
+      + zone           = "ru-central1-a"
+    }
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + external_ip_address_node01_yandex_cloud = (known after apply)
+  + internal_ip_address_node01_yandex_cloud = (known after apply)
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+yandex_vpc_network.default: Creating...
+yandex_vpc_network.default: Creation complete after 1s [id=enpk6pbsbuofvbgubppd]
+yandex_vpc_subnet.default: Creating...
+yandex_vpc_subnet.default: Creation complete after 1s [id=e9bc34sre5bff3hjt2rv]
+yandex_compute_instance.node01: Creating...
+yandex_compute_instance.node01: Still creating... [10s elapsed]
+yandex_compute_instance.node01: Still creating... [20s elapsed]
+yandex_compute_instance.node01: Still creating... [30s elapsed]
+yandex_compute_instance.node01: Still creating... [40s elapsed]
+yandex_compute_instance.node01: Still creating... [50s elapsed]
+yandex_compute_instance.node01: Creation complete after 57s [id=fhm84tfk2eug1a2t65le]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+external_ip_address_node01_yandex_cloud = "158.160.101.128"
+internal_ip_address_node01_yandex_cloud = "192.168.101.28"
+
+
+</details>
+
+![yandex_vm_terraform](https://github.com/zrusakov/devops-netology/assets/89297920/f0bc2da9-2efa-4b16-bcc8-e81ab27fce2a)
 
 ## Задача 3
 
