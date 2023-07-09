@@ -8,7 +8,8 @@
 
 </details>
 
-![disk_image_docker_copmpose](https://github.com/zrusakov/devops-netology/assets/89297920/eb47c334-0e0c-4f87-a465-da742e668279)
+![disk_image_docker_copmpose](https://github.com/zrusakov/devops-netology/assets/89297920/27e11b60-be68-40c5-84ea-bc7a4865d560)
+
 
 ## Задача 2
 
@@ -19,7 +20,7 @@
 
 </details>
 
-![yandex_vm](https://github.com/zrusakov/devops-netology/assets/89297920/e9289621-7381-4153-8645-8072919cc9f7)
+![yandex_vm](https://github.com/zrusakov/devops-netology/assets/89297920/6554a988-ed0a-4bdf-82df-3faace091cc7)
 
 <details>
 <summary>2.2 Первая VM в облаке с помощью Terraform  </summary>
