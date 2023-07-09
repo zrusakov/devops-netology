@@ -200,6 +200,8 @@ a2f8ff87601b   stefanprodan/caddy                 "/sbin/tini -- caddy…"   Abo
 
 </details>
 
+![add_node_cloud](https://github.com/zrusakov/devops-netology/assets/89297920/d89f81fb-e214-496b-9e9a-83edb82da952)
+
 ![docker_compose_grafana](https://github.com/zrusakov/devops-netology/assets/89297920/8a949551-7ce2-405c-977b-cbccd2d5fdce)
 
 
