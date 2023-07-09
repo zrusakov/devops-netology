@@ -171,6 +171,18 @@ internal_ip_address_node01_yandex_cloud = "192.168.101.28"
 
 </details>
 
+```
+[root@node01 centos]# docker ps
+CONTAINER ID   IMAGE                              COMMAND                  CREATED             STATUS                       PORTS                                                                              NAMES
+a32ec8e55c4d   gcr.io/cadvisor/cadvisor:v0.47.0   "/usr/bin/cadvisor -…"   About an hour ago   Up About an hour (healthy)   8080/tcp                                                                           cadvisor
+3f17a4eb9e42   prom/pushgateway:v1.2.0            "/bin/pushgateway"       About an hour ago   Up About an hour             9091/tcp                                                                           pushgateway
+8295884670ce   prom/alertmanager:v0.20.0          "/bin/alertmanager -…"   About an hour ago   Up About an hour             9093/tcp                                                                           alertmanager
+2ae122eb7f10   prom/prometheus:v2.17.1            "/bin/prometheus --c…"   About an hour ago   Up About an hour             9090/tcp                                                                           prometheus
+ccb901f6e5de   prom/node-exporter:v0.18.1         "/bin/node_exporter …"   About an hour ago   Up About an hour             9100/tcp                                                                           nodeexporter
+face3a38fdd8   grafana/grafana:7.4.2              "/run.sh"                About an hour ago   Up About an hour             3000/tcp                                                                           grafana
+a2f8ff87601b   stefanprodan/caddy                 "/sbin/tini -- caddy…"   About an hour ago   Up About an hour             0.0.0.0:3000->3000/tcp, 0.0.0.0:9090-9091->9090-9091/tcp, 0.0.0.0:9093->9093/tcp   caddy
+[root@node01 centos]#
+```
 
 ## Задача 4
 
@@ -187,6 +199,9 @@ internal_ip_address_node01_yandex_cloud = "192.168.101.28"
 
 </details>
 
+![docker_compose_grafana](https://github.com/zrusakov/devops-netology/assets/89297920/8a949551-7ce2-405c-977b-cbccd2d5fdce)
+
+
 ## Задача 5
 
 <details>
@@ -199,3 +214,5 @@ internal_ip_address_node01_yandex_cloud = "192.168.101.28"
 скриншот из Grafana, на котором будут отображаться метрики добавленного вами сервера.
 
 </details>
+
+![add_node](https://github.com/zrusakov/devops-netology/assets/89297920/966ff61b-805f-4a87-a8e9-1c576464fe95)
