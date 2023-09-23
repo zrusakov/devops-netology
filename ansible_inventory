@@ -1,0 +1,8 @@
+[webservers]
+
+web-1   ansible_host=84.201.133.55
+web-2   ansible_host=158.160.122.27
+[databases]
+
+web-1   ansible_host=84.201.133.55
+web-2   ansible_host=158.160.122.27
