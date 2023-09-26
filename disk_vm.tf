@@ -6,22 +6,27 @@ resource "yandex_compute_disk" "storage" {
 }
 
 resource "yandex_compute_instance" "storage" {
-  name       = "storage"
+  for_each   = {
+    for s in var.storage:
+        s.vm_name => s
+  }
+  name       = each.value.vm_name
   platform_id = var.platform_id_v1
   resources {
-    cores         = 2
-    memory        = 4
-	core_fraction = 5
+    cores         = each.value.cpu
+    memory        = each.value.ram
+	core_fraction = each.value.cf
   }
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
+          size = each.value.disk
     }
   }
   dynamic "secondary_disk" {
-	for_each = lookup(each.value, "secondary_disk")
+	for_each = yandex_compute_disk.storage
 		content {
-		disk_id = yandex_compute_disk.storage.id
+		disk_id = secondary_disk.value.id
 	}
   }
   scheduling_policy {

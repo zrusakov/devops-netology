@@ -2,13 +2,21 @@
 
 %{~ for i in webservers ~}
 
-${i["name"]}   ansible_host=${i["network_interface"][0]["nat_ip_address"]} 
+${i["name"]}   ansible_host=${i["network_interface"][0]["nat_ip_address"]}
 %{~ endfor ~}
 
 [databases]
 
-%{~ for i in webservers ~}
+%{~ for i in databases ~}
 
-${i["name"]}   ansible_host=${i["network_interface"][0]["nat_ip_address"]} 
+${i["name"]}   ansible_host=${i["network_interface"][0]["nat_ip_address"]}
+%{~ endfor ~}
+
+[storage]
+
+%{~ for i in storage ~}
+
+${i["name"]}   ansible_host=${i["network_interface"][0]["nat_ip_address"]}
+
 %{~ endfor ~}
 

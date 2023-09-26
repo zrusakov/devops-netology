@@ -59,7 +59,7 @@ variable "db" {
 	vm_name=string, 
 	cpu=number, 
 	ram=number, 
-	disk=number }))
+	disk=number}))
   default = [
     {
 	vm_name= "main", 
@@ -75,4 +75,23 @@ variable "db" {
     }
   ]
   description = "compute config cpu/ram/core fraction for db"
+}
+
+variable "storage" {
+  type = list(object({
+        vm_name=string,
+        cpu=number,
+        ram=number,
+        disk=number,
+	cf=number}))
+  default = [
+    {
+        vm_name = "storage",
+        cpu = "2",
+        ram = "4",
+        disk = "10",
+	cf = "5"
+    }
+  ]
+  description = "compute config cpu/ram/core fraction/disk for storage"
 }
